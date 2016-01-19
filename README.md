@@ -20,3 +20,27 @@ class Player
     @health = warrior.health
  end
 end
+# level 5
+
+class Player
+  def play_turn(warrior)
+    if warrior.feel.empty?
+      if warrior.health > 13
+        warrior.walk!
+      else
+        if @health > warrior.health
+          warrior.walk!
+        else
+          warrior.rest!
+        end
+      end
+    else
+      if warrior.feel.captive?
+        warrior.rescue!
+      else
+        warrior.attack!
+      end
+    end
+    @health = warrior.health
+ end
+end
